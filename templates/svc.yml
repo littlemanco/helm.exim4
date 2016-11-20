@@ -3,8 +3,6 @@ kind: "Service"
 apiVersion: "v1"
 metadata:
   name: "smtp"
-  annotations:
-    prometheus.io/scrape: "true"
   labels:
     application: "exim4"
     role: "smtp"
