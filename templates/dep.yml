@@ -26,7 +26,7 @@ spec:
       volumes:
         - name: "etc-mailname"
           configMap:
-            name: "smtp-data"
+            name: "etc-mailname"
             items:
               - key: "mailname"
                 path: "mailname"

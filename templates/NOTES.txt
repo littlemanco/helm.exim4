@@ -1,10 +1,8 @@
-==========
+=====
 exim4
-==========
+=====
 
 Accessing exim4
---------------------
+----------------
 
-// Todo: Fill this in.
-
-For more information, see the README.
+There will be a service created at `smtp`. Point your SMTP stuff at it.
