@@ -50,7 +50,8 @@ spec:
           volumeMounts:
             - name: "etc-mailname"
               readOnly: true
-              mountPath: "/etc"
+              mountPath: "/etc/mailname"
+              subPath: "mailname"
           livenessProbe:
             tcpSocket:
               port: 25
