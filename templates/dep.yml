@@ -6,7 +6,6 @@ metadata:
     application: "exim4"
     role: "smtp"
   name: "smtp"
-  namespace: "removeme"
 spec:
   replicas: 1
   selector:
