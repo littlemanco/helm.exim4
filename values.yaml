@@ -1,1 +1,5 @@
 ---
+## Select the mailname for the exim4 daemon
+## Ref: https://wiki.debian.org/EtcMailName
+## Default: "mailer"
+# mailname:

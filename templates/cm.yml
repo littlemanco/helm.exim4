@@ -4,7 +4,4 @@ kind: "ConfigMap"
 metadata:
   name: "etc-mailname"
 data:
-  # example.property.1: hello
-  # example.property.file: |-
-  #   property.1=value-1
-  #   property.2=value-2
+  mailname: {{ default "mailer" .Values.mailname | quote }}
