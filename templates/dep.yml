@@ -1,0 +1,73 @@
+---
+apiVersion: "extensions/v1beta1"
+kind: "Deployment"
+metadata:
+  labels:
+    application: "exim4"
+    role: "smtp"
+  name: "smtp"
+  namespace: "removeme"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      application: "exim4"
+      role: "smtp"
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: "RollingUpdate"
+  template:
+    metadata:
+      labels:
+        application: "exim4"
+        role: "smtp"
+    spec:
+      # volumes:
+      # - name: "smtp-etc-conf-d"
+      # configMap:
+      #   name: "smtp-etc-conf-d"
+      # - name: "smtp-data"
+      #   hostPath:
+      #     path: /data/smtp/
+      containers:
+        - name: "exim4"
+          image: "tianon/exim4:latest"
+          imagePullPolicy: "Always"
+          # args:
+          #   - "command"
+          #   - "line"
+          #   - "arguments"
+          resources:
+            limits:
+              cpu: "100m"
+              memory: "16Mi"
+            requests:
+              cpu: "100m"
+              memory: "16Mi"
+          securityContext:
+            privileged: false
+          ports:
+            - containerPort: 25
+              protocol: "TCP"
+              name: "smtp"
+          # volumeMounts:
+          # - name: "smtp-etc-conf-d"
+          #   readOnly: true
+          #   mountPath: "/etc/smtp/conf.d"
+          # - name: "smtp-data
+          #   readOnly: false
+          #   mountPath: "/data"
+          livenessProbe:
+            tcpSocket:
+              port: 25
+            initialDelaySeconds: 5
+            timeoutSeconds: 1
+          readinessProbe:
+            tcpSocket:
+              port: "smtp"
+            initialDelaySeconds: 5
+            timeoutSeconds: 1
+      restartPolicy: "Always"
+      securityContext: {}

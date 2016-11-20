@@ -1,0 +1,13 @@
+---
+name: "exim4"
+version: "4.87.0"
+description: "Creates a simple exim4 deployment for use by other services in the cluster."
+keywords:
+  - "exim4"
+home: "https://github.com/littlemanco/helm.exim4.git"
+sources:
+  - "https://github.com/tianon/dockerfiles/tree/master/exim4"
+maintainers:
+  - name: "Andrew Howden"
+    email: "hello[at]andrewhowden.com"
+engine: gotpl
